@@ -33,7 +33,7 @@ const AllCompanies = () => {
         );
       });
     } else {
-      filteredData = data.data;
+      filteredData = data?.data;
     }
     setAllCompanies(filteredData);
   }, [searchText, selectedCategory, selectDate, data?.data]);
