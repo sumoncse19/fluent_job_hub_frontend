@@ -35,6 +35,11 @@ const Navbar = () => {
               <Link to="/add-new-company">Add New Company</Link>
             </button>
           </li>
+          <li>
+            <button>
+              <Link to="/add-new-employee">Add Employee</Link>
+            </button>
+          </li>
         </ul>
 
         <div className="cursor-pointer" onClick={handleLogout}>

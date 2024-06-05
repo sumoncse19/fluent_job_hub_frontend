@@ -1,45 +1,23 @@
-import React, { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import toast from "react-hot-toast";
-import { useDeleteCompanyMutation } from "../../redux/feature/company/companyApi";
+import React from "react";
 
 interface DeleteConfirmationDialogProps {
   openModal: boolean;
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+  confirmDelete: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 const DeleteConfirmationDialog = ({
   openModal,
   setOpenModal,
+  confirmDelete,
 }: DeleteConfirmationDialogProps) => {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const [deleteCompany, { isLoading, isError, isSuccess }] =
-    useDeleteCompanyMutation();
-
-  useEffect(() => {
-    if (isSuccess) {
-      toast.dismiss();
-      toast.success("Company deleted successfully");
+  const handleDelete = (e: any) => {
+    if (confirmDelete) {
+      confirmDelete(e);
       setOpenModal(false);
-      navigate("/all-companies");
     }
-  }, [isSuccess]);
-
-  const handleDelete = () => {
-    deleteCompany(id);
   };
 
-  if (isLoading) {
-    return (
-      <div className="w-full h-[70vh] flex flex-col justify-center items-center">
-        Loading...
-      </div>
-    );
-  }
-  if (isError) {
-    console.log("err");
-  }
   return (
     <>
       {openModal && (
@@ -64,7 +42,9 @@ const DeleteConfirmationDialog = ({
                 Cancel
               </button>
               <button
-                onClick={handleDelete}
+                onClick={(e) => {
+                  handleDelete(e);
+                }}
                 className="bg-red-500 text-white px-3 py-2 rounded-lg"
               >
                 Yes

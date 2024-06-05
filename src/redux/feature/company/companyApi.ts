@@ -2,6 +2,7 @@ import { api } from "../../api/apiSlice";
 
 const companyApi = api.injectEndpoints({
   endpoints: (builder) => ({
+    // Handle company API
     getCompanies: builder.query({
       query: () => "/companies",
       providesTags: ["companies"],
@@ -35,13 +36,42 @@ const companyApi = api.injectEndpoints({
       },
       invalidatesTags: ["companies"],
     }),
-    postComment: builder.mutation({
-      query: ({ id, data }) => ({
-        url: `/comment/${id}`,
+
+    // Handle employee API
+    getEmployee: builder.query({
+      query: (id) => `/employees/${id}`,
+      providesTags: ["employees"],
+    }),
+    postEmployee: builder.mutation({
+      query: (data) => ({
+        url: `/employee`,
         method: "POST",
         body: data,
       }),
-      invalidatesTags: ["reviews"],
+      invalidatesTags: ["employees"],
+    }),
+    updateEmployee: builder.mutation({
+      query: (data) => ({
+        url: `/employee`,
+        method: "PUT",
+        body: data,
+      }),
+      invalidatesTags: ["employees"],
+    }),
+    deleteEmployee: builder.mutation({
+      query(id) {
+        return {
+          url: `/employee/${id}`,
+          method: "DELETE",
+        };
+      },
+      invalidatesTags: ["employees"],
+    }),
+
+    // Handle review API
+    getReviews: builder.query({
+      query: (id) => `/reviews/${id}`,
+      providesTags: ["reviews"],
     }),
     postReview: builder.mutation({
       query: (data) => ({
@@ -51,13 +81,19 @@ const companyApi = api.injectEndpoints({
       }),
       invalidatesTags: ["reviews"],
     }),
-    getReviews: builder.query({
-      query: (id) => `/reviews/${id}`,
-      providesTags: ["reviews"],
-    }),
+
+    // Handle comments API
     getComment: builder.query({
       query: (id) => `/comment/${id}`,
       providesTags: ["reviews"],
+    }),
+    postComment: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/comment/${id}`,
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["reviews"],
     }),
   }),
 });
@@ -65,12 +101,18 @@ const companyApi = api.injectEndpoints({
 export const {
   useGetCompaniesQuery,
   useSingleCompanyQuery,
-  useGetCommentQuery,
-  useGetReviewsQuery,
-
-  usePostCommentMutation,
-  useDeleteCompanyMutation,
-  useEditCompanyMutation,
   usePostCompanyMutation,
+  useEditCompanyMutation,
+  useDeleteCompanyMutation,
+
+  useGetEmployeeQuery,
+  usePostEmployeeMutation,
+  useUpdateEmployeeMutation,
+  useDeleteEmployeeMutation,
+
+  useGetReviewsQuery,
   usePostReviewMutation,
+
+  useGetCommentQuery,
+  usePostCommentMutation,
 } = companyApi;
