@@ -14,14 +14,15 @@ import { useAppSelector } from "../redux/hook";
 import DeleteConfirmationDialog from "../components/base/DeleteConfirmationDialog";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { ReviewInterface } from "../types/companyType";
+import { EmployeeInterface, ReviewInterface } from "../types/companyType";
 import UpdateEmployeeModal from "../components/UpdateEmployee";
 
 const SingleCompany = () => {
   const [openModal, setOpenModal] = useState(false);
   const [openEditModal, setOpenEditModal] = useState(false);
   const [isDeleteCompany, setIsDeleteCompany] = useState(false);
-  const [selectedEmployeeData, setSelectedEmployeeData] = useState("");
+  const [selectedEmployeeData, setSelectedEmployeeData] =
+    useState<EmployeeInterface>();
   const [actionEmployeeId, setActionEmployeeId] = useState("");
   const [review, setReview] = useState("");
   const { id } = useParams();
@@ -275,12 +276,14 @@ const SingleCompany = () => {
         setOpenModal={setOpenModal}
         confirmDelete={confirmDelete}
       />
-      <UpdateEmployeeModal
-        openEditModal={openEditModal}
-        setOpenEditModal={setOpenEditModal}
-        employeeData={selectedEmployeeData}
-        // confirmUpdated={confirmUpdated}
-      />
+      {selectedEmployeeData && (
+        <UpdateEmployeeModal
+          openEditModal={openEditModal}
+          setOpenEditModal={setOpenEditModal}
+          employeeData={selectedEmployeeData}
+          // confirmUpdated={confirmUpdated}
+        />
+      )}
     </>
   );
 };
