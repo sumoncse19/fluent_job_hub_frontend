@@ -15,11 +15,17 @@ const CompanyCard = ({ company }: { company: CompanyInterface }) => {
           onMouseEnter={() => setHoverItemId(company._id)}
           onMouseLeave={() => setHoverItemId("")}
         >
-          <img
-            className="w-full md:w-1/2 h-[400px] md:h-full rounded-l-lg flex flex-col grow"
-            src={company?.image}
-            alt="Room Image"
-          />
+          {company.image !== "" ? (
+            <img
+              className="w-full md:w-1/2 h-[400px] md:h-full rounded-l-lg flex flex-col grow"
+              src={company?.image}
+              alt="Company Image"
+            />
+          ) : (
+            <div className="w-full md:w-1/2 h-[400px] md:h-full rounded-l-lg flex flex-col justify-center items-center grow">
+              No Image
+            </div>
+          )}
           <div className="w-full flex flex-col">
             <div className="p-4 pb-0 flex-1">
               <h3 className=" mb-4 text-2xl font-bold text-grey-darkest">
