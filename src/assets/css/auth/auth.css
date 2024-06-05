@@ -21,7 +21,7 @@
   @apply w-full relative;
 }
 
-form {
+.form-box > form {
   @apply w-full absolute transition-all duration-500;
 }
 
