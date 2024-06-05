@@ -1,0 +1,146 @@
+.authBody {
+  background: linear-gradient(#141e30, #243b55);
+}
+.authWrapper {
+  @apply flex items-center flex-col max-w-[35rem] rounded-lg bg-black bg-opacity-50 shadow-[0_15px_30px_rgba(0,0,0,0.6)] p-8 text-base h-[38rem] overflow-hidden relative;
+}
+
+.button-box {
+  @apply relative bg-[#141e30] w-auto rounded-full my-2 md:my-14 z-0;
+}
+
+.toggle-btn {
+  @apply inline-block text-white text-lg font-bold tracking-wide bg-transparent border-none py-2 px-6 cursor-pointer rounded-full z-10;
+}
+
+.btn-active-back {
+  @apply bg-gradient-to-r from-[#03e9f4] to-[#00aab3] w-1/2 rounded-full h-full absolute left-0 z-[-1] transition-all duration-500;
+}
+
+.form-box {
+  @apply w-full relative;
+}
+
+form {
+  @apply w-full absolute transition-all duration-500;
+}
+
+.login-form {
+  @apply left-0;
+}
+
+.register-form {
+  @apply left-[115%];
+}
+
+.input-box {
+  @apply flex flex-col text-base mb-10 relative;
+}
+
+.input-box input {
+  @apply w-full py-1 px-[0.2rem] text-inherit text-[#243b55] outline-none  bg-transparent focus:bg-white border-b border-[#243b55];
+}
+
+.input-box label {
+  @apply text-white absolute top-[30%] pointer-events-none transition-all duration-500;
+}
+
+.input-box input:focus + label,
+.input-box input:valid + label {
+  @apply top-[-20px] text-[#03e9f4] text-xs bg-[#243b55] p-[2px] px-[5px];
+}
+
+.check-box {
+  @apply flex items-center;
+}
+
+input[type="checkbox"] {
+  @apply appearance-none h-[0.75rem] w-[0.75rem] bg-gray-400 grid place-items-center cursor-pointer;
+}
+
+input[type="checkbox"]::after {
+  /* @apply scale-0 transition-transform ease-in-out origin-bottom-left; */
+  content: "";
+  transform: scale(0);
+  transition: 0.2s transform ease-in-out;
+  transform-origin: bottom left;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+input[type="checkbox"]:checked::after {
+  @apply bg-[#03e9f4] w-[0.7rem] h-[0.7rem] scale-100;
+}
+
+input[type="checkbox"]:checked {
+  @apply bg-gray-500 shadow-[0_0_10px_#1b1b1b];
+}
+
+input[type="checkbox"] + label {
+  @apply text-gray-400 text-sm pl-2 cursor-pointer;
+}
+
+.check-box span {
+  @apply text-gray-400 text-sm absolute right-0 cursor-pointer;
+}
+
+.submit-button {
+  @apply relative block mx-auto py-2 px-4 text-[#03e9f4] text-base font-bold uppercase overflow-hidden border-none transition-all mt-8 tracking-wider bg-gray-700;
+}
+
+.submit-button:hover {
+  @apply bg-[#03e9f4] text-white rounded-md shadow-[0_0_25px_#03e9f4];
+}
+
+.submit-button span {
+  @apply absolute block;
+}
+
+.submit-button span:nth-child(1) {
+  @apply top-0 left-[-100%] w-full h-1 bg-gradient-to-r from-transparent to-[#03e9f4];
+  animation: btn-anim1 1s linear infinite;
+}
+
+.submit-button span:nth-child(2) {
+  @apply top-[-100%] right-0 w-1 h-full bg-gradient-to-b from-transparent to-[#03e9f4];
+  animation: btn-anim2 1s linear infinite 0.25s;
+}
+
+.submit-button span:nth-child(3) {
+  @apply bottom-0 w-full h-1 right-[-100%] bg-gradient-to-l from-transparent to-[#03e9f4];
+  animation: btn-anim3 1s linear infinite 0.5s;
+}
+
+.submit-button span:nth-child(4) {
+  @apply bottom-[-100%] left-0 w-1 h-full bg-gradient-to-t from-transparent to-[#03e9f4];
+  animation: btn-anim4 1s linear infinite 0.75s;
+}
+
+.other-options {
+  @apply absolute bottom-4;
+}
+
+.another-option {
+  @apply text-white text-center font-bold bg-[#243b55] rounded-full px-2 w-8 mx-auto mb-[-1rem];
+}
+
+.social-icons {
+  @apply w-[16rem] mb-4 flex justify-around;
+}
+
+.social-icons svg {
+  @apply w-8 h-8 p-2 rounded-full bg-[#243b55] mt-[10%] cursor-pointer;
+}
+
+.social-icons svg:hover {
+  @apply shadow-[0_0_10px_#00aab3];
+}
+
+.social-icons svg path {
+  @apply fill-[#03e9f4];
+}
+
+@media (min-width: 390px) {
+  .authWrapper {
+    @apply w-[35rem];
+  }
+}
