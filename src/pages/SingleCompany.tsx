@@ -104,7 +104,15 @@ const SingleCompany = () => {
     <>
       <div className="flex flex-wrap gap-4 max-w-7xl mx-auto items-center border-b border-gray-300 py-5">
         <div className="md:pr-5">
-          <img src={company?.data?.image} alt="" />
+          <img
+            src={
+              company.data.image && company.data.image.includes("https://")
+                ? company.data.image
+                : "https://img.freepik.com/free-vector/business-logo_23-2147503133.jpg?size=338&ext=jpg&ga=GA1.1.1518270500.1717545600&semt=ais_user"
+            }
+            className=""
+            alt=""
+          />
         </div>
 
         <div className="pl-4 space-y-3">
