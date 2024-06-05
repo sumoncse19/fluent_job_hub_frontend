@@ -28,8 +28,7 @@ const SingleCompany = () => {
   const { data: company, isLoading, error } = useSingleCompanyQuery(id);
   const [deleteCompany, { isSuccess: deleteCompanySuccess }] =
     useDeleteCompanyMutation();
-  const [deleteEmployee, { isSuccess: deleteEmployeeSuccess }] =
-    useDeleteEmployeeMutation();
+  const [deleteEmployee] = useDeleteEmployeeMutation();
   const {
     data: reviews,
     isLoading: reviewLoading,

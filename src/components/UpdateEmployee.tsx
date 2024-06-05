@@ -63,12 +63,7 @@ UpdateEmployeeModalProps) => {
           >
             <div className="md:p-3 w-full">
               <div className="flex justify-center items-center pb-8">
-                <img
-                  src={employeeData.image}
-                  className="w-20 h-20"
-                  alt=""
-                  srcset=""
-                />
+                <img src={employeeData.image} className="w-20 h-20" alt="" />
               </div>
               <div className="flex justify-between items-center my-2">
                 <label className="text-xl font-medium" htmlFor="name">
