@@ -78,7 +78,13 @@ const AddNewEmployee = () => {
   return (
     <div className="p-4 md:p-8 lg:p-12 flex flex-col items-center w-full lg:w-[75%] 2xl:w-1/2 mx-auto bg-slate-800 text-white rounded-lg">
       <h1 className="text-2xl font-bold mb-7">Add New Employee</h1>
-      <div className="md:p-3 w-full">
+      <form
+        className="md:p-3 w-full"
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleAddEmployee();
+        }}
+      >
         <div className="flex justify-between items-center my-2">
           <label className="text-xl font-medium" htmlFor="name">
             Name
@@ -90,6 +96,7 @@ const AddNewEmployee = () => {
             className="border border-blue-500 rounded-md outline-none px-3 py-2 w-[70%] text-black"
             type="text"
             name="name"
+            required={true}
             id=""
           />
         </div>
@@ -103,6 +110,7 @@ const AddNewEmployee = () => {
             placeholder="Write the employee address"
             className="border border-blue-500 rounded-md outline-none px-3 py-2 w-[70%] text-black"
             type="text"
+            required={true}
             name="address"
             id=""
           />
@@ -116,7 +124,8 @@ const AddNewEmployee = () => {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Write employee email"
             className="border border-blue-500 rounded-md outline-none px-3 py-2 w-[70%] text-black"
-            type="text"
+            type="email"
+            required={true}
             name="email"
             id=""
           />
@@ -131,6 +140,7 @@ const AddNewEmployee = () => {
             placeholder="Write employee mobile number"
             className="border border-blue-500 rounded-md outline-none px-3 py-2 w-[70%] text-black"
             type="number"
+            required={true}
             name="mobile"
             id=""
           />
@@ -168,16 +178,14 @@ const AddNewEmployee = () => {
               ))}
           </select>
         </div>
-      </div>
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          handleAddEmployee();
-        }}
-        className=" bg-green-500 px-12 rounded-md text-white font-semibold py-2"
-      >
-        Save
-      </button>
+
+        <button
+          type="submit"
+          className=" bg-green-500 px-12 rounded-md text-white font-semibold py-2"
+        >
+          Save
+        </button>
+      </form>
     </div>
   );
 };
