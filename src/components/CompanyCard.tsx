@@ -15,17 +15,22 @@ const CompanyCard = ({ company }: { company: CompanyInterface }) => {
           onMouseEnter={() => setHoverItemId(company._id)}
           onMouseLeave={() => setHoverItemId("")}
         >
-          {company.image !== "" && company.image.includes("https://") ? (
-            <img
-              className="w-full md:w-1/2 h-[400px] md:h-full rounded-l-lg flex flex-col grow"
-              src={company?.image}
-              alt="Company Image"
-            />
+          <img
+            className="w-full md:w-1/2 h-[400px] md:h-full rounded-l-lg flex flex-col grow"
+            src={
+              company.image && company.image.includes("https://")
+                ? company.image
+                : "https://img.freepik.com/free-vector/business-logo_23-2147503133.jpg?size=338&ext=jpg&ga=GA1.1.1518270500.1717545600&semt=ais_user"
+            }
+            alt="Company Image"
+          />
+          {/* {company.image !== "" && company.image.includes("https://") ? (
+            
           ) : (
             <div className="w-full md:w-1/2 h-[400px] md:h-full rounded-l-lg flex flex-col justify-center items-center grow">
               No Image
             </div>
-          )}
+          )} */}
           <div className="w-full flex flex-col">
             <div className="p-4 pb-0 flex-1">
               <h3 className=" mb-4 text-2xl font-bold text-grey-darkest">
