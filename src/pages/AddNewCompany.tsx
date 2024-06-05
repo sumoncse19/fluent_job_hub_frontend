@@ -29,7 +29,6 @@ const AddNewCompany = () => {
           image,
         });
 
-        console.log(response, "response");
         if (response?.error?.status === 409) {
           toast.dismiss();
           toast.error(response.error.data.message);
@@ -57,7 +56,13 @@ const AddNewCompany = () => {
   return (
     <div className="p-4 md:p-8 lg:p-12 flex flex-col items-center w-full lg:w-[50%] mx-auto bg-slate-800 text-white rounded-lg">
       <h1 className="text-2xl font-bold mb-7">Add New Company</h1>
-      <div className="md:p-3 w-full">
+      <form
+        className="md:p-3 w-full"
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleAddCompany();
+        }}
+      >
         <div className="flex justify-between items-center my-2">
           <label className="text-xl font-medium" htmlFor="title">
             Name
@@ -65,6 +70,7 @@ const AddNewCompany = () => {
           <input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            required={true}
             placeholder="Write company name"
             className="border border-blue-500 rounded-md outline-none px-3 py-2 w-[70%] text-black"
             type="text"
@@ -78,6 +84,7 @@ const AddNewCompany = () => {
           </label>
           <input
             value={address}
+            required={true}
             onChange={(e) => setAddress(e.target.value)}
             placeholder="Write the company address"
             className="border border-blue-500 rounded-md outline-none px-3 py-2 w-[70%] text-black"
@@ -92,10 +99,11 @@ const AddNewCompany = () => {
           </label>
           <input
             value={email}
+            required={true}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Write company email"
             className="border border-blue-500 rounded-md outline-none px-3 py-2 w-[70%] text-black"
-            type="text"
+            type="email"
             name="email"
             id=""
           />
@@ -114,16 +122,14 @@ const AddNewCompany = () => {
             id=""
           />
         </div>
-      </div>
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          handleAddCompany();
-        }}
-        className=" bg-green-500 px-12 rounded-md text-white font-semibold py-2"
-      >
-        Save
-      </button>
+
+        <button
+          type="submit"
+          className=" bg-green-500 px-12 rounded-md text-white font-semibold py-2"
+        >
+          Save
+        </button>
+      </form>
     </div>
   );
 };

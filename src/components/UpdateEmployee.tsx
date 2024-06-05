@@ -23,14 +23,6 @@ UpdateEmployeeModalProps) => {
   const [address, setAddress] = useState(employeeData.address);
 
   const handleEmployee = () => {
-    console.log(
-      "Update employee data",
-      employeeData,
-      name,
-      email,
-      mobile,
-      address
-    );
     updateEmployee({
       _id: employeeData._id,
       name: name ? name : employeeData.name,
