@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useUpdateEmployeeMutation } from "../redux/feature/company/companyApi";
+import { EmployeeInterface } from "../types/companyType";
 
 interface UpdateEmployeeModalProps {
   openEditModal: boolean;
-  employeeData: any;
+  employeeData: EmployeeInterface;
   setOpenEditModal: React.Dispatch<React.SetStateAction<boolean>>;
   // confirmUpdated: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }

@@ -20,3 +20,13 @@ export interface ReviewInterface {
     authKey: number;
   };
 }
+
+export interface EmployeeInterface {
+  _id: string;
+  name: string;
+  email: string;
+  mobile: string;
+  address: string;
+  assignedCompanyId: string;
+  image: string;
+}

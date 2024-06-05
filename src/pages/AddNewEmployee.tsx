@@ -49,7 +49,6 @@ const AddNewEmployee = () => {
           assignedCompanyId,
         });
 
-        console.log(response, "response");
         if (response?.error?.status === 409) {
           toast.dismiss();
           toast.error(response.error.data.message);
