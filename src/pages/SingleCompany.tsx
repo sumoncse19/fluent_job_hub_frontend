@@ -79,7 +79,6 @@ const SingleCompany = () => {
       setIsDeleteCompany(false);
     } else {
       deleteEmployee(actionEmployeeId);
-      console.log("From confirmDelete", actionEmployeeId);
     }
   };
 
@@ -158,7 +157,12 @@ const SingleCompany = () => {
                     >
                       <div className="flex justify-center items-center">
                         <img
-                          src={employee.image}
+                          src={
+                            employee.image &&
+                            employee.image.includes("https://")
+                              ? employee.image
+                              : "https://e7.pngegg.com/pngimages/419/473/png-clipart-computer-icons-user-profile-login-user-heroes-sphere-thumbnail.png"
+                          }
                           alt=""
                           className="w-20 h-20 rounded-full"
                         />

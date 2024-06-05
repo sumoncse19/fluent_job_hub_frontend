@@ -15,7 +15,7 @@ const CompanyCard = ({ company }: { company: CompanyInterface }) => {
           onMouseEnter={() => setHoverItemId(company._id)}
           onMouseLeave={() => setHoverItemId("")}
         >
-          {company.image !== "" ? (
+          {company.image !== "" && company.image.includes("https://") ? (
             <img
               className="w-full md:w-1/2 h-[400px] md:h-full rounded-l-lg flex flex-col grow"
               src={company?.image}
