@@ -180,26 +180,30 @@ const SingleCompany = () => {
                         </p>
                       </div>
 
-                      <div
-                        className="absolute p-3 bg-slate-500 rounded-full translate-x-1/2 -translate-y-1/2 right-0 cursor-pointer"
-                        onClick={() => {
-                          setActionEmployeeId(employee._id);
-                          setSelectedEmployeeData(employee);
-                          setOpenEditModal(true);
-                        }}
-                      >
-                        <MdOutlineEdit />
-                      </div>
+                      {user._id && user._id == company.data.userId && (
+                        <>
+                          <div
+                            className="absolute p-3 bg-slate-500 rounded-full translate-x-1/2 -translate-y-1/2 right-0 cursor-pointer"
+                            onClick={() => {
+                              setActionEmployeeId(employee._id);
+                              setSelectedEmployeeData(employee);
+                              setOpenEditModal(true);
+                            }}
+                          >
+                            <MdOutlineEdit />
+                          </div>
 
-                      <div
-                        className="absolute p-3 bg-red-400 rounded-full bottom-0 left-0 w-fit h-fit cursor-pointer"
-                        onClick={() => {
-                          setOpenModal(true);
-                          setActionEmployeeId(employee._id);
-                        }}
-                      >
-                        <MdDelete />
-                      </div>
+                          <div
+                            className="absolute p-3 bg-red-400 rounded-full bottom-0 left-0 w-fit h-fit cursor-pointer"
+                            onClick={() => {
+                              setOpenModal(true);
+                              setActionEmployeeId(employee._id);
+                            }}
+                          >
+                            <MdDelete />
+                          </div>
+                        </>
+                      )}
                     </div>
                   );
                 })}
